@@ -18,6 +18,9 @@ services:
   php:
     build:
       context: ./docker/php
+      args:
+        - GID=${GID}
+        - UID=${UID}
     depends_on:
       - mysql
     volumes:
