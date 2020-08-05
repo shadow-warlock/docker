@@ -27,8 +27,6 @@ services:
       - ./project/:/var/www/project/
     networks:
       - backend
-    command: >
-      bash -c "composer install && php-fpm"
 
   mysql:
     image: mysql:5.7
