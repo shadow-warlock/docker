@@ -1,2 +1,4 @@
-/project_name/project/frontend/
-/.idea/
+*
+!/proxy/
+!.gitignore
+!/project_creator/*

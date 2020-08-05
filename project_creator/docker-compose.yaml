@@ -18,6 +18,9 @@ services:
   php:
     build:
       context: ./docker/php
+      args:
+        - GID=${GID}
+        - UID=${UID}
     depends_on:
       - mysql
     volumes:
@@ -25,7 +28,7 @@ services:
     networks:
       - backend
     command: >
-      bash -c "composer install && bin/console doctrine:database:drop --force && bin/console doctrine:database:create && bin/console doctrine:migrations:migrate && php-fpm"
+      bash -c "composer install && php-fpm"
 
   mysql:
     image: mysql:5.7
@@ -37,18 +40,6 @@ services:
       - backend
     ports:
       - 8306:3306
-
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    environment:
-      - VIRTUAL_HOST=phpmyadmin.local
-      - PMA_HOST=mysql
-      - PMA_USER=root
-      - PMA_PASSWORD=root
-    networks:
-      - frontend
-      - backend
 
 
 networks:
