@@ -30,6 +30,7 @@ services:
 
   mysql:
     image: mysql:5.7
+    user: ${UID}:${GID}
     volumes:
       - ./docker/mysql/data:/var/lib/mysql
     environment:

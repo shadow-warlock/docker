@@ -10,5 +10,5 @@ WORKDIR /var/www/project/backend
 ARG GID=1000
 ARG UID=1000
 RUN groupadd -g $GID php
-RUN useradd --uid $UID --gid $GID --shell /bin/bash php
+RUN useradd --uid $UID --gid $GID --shell /bin/bash --create-home php
 USER php
